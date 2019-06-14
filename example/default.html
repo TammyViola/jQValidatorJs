@@ -10,140 +10,210 @@
 <title>表单验证</title>
 <link href="../dist/css/module.css" rel="stylesheet" type="text/css"/>
 <link href="../dist/css/jQValidator.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+	.w500{
+		width: 500px;
+		margin: 0 auto;
+	}
+	.form-control{
+		width: 462px;
+		height: 24px;
+	}
+	select.form-control{
+		width: 500px;
+		height: 40px;
+	}
+	.frm-btn-group{
+		overflow: hidden;
+		text-align: center;
+		margin:  30px auto;
+	}
+	.frm-btn-group .ctrl{
+		min-width: 4em;
+		padding: 0 10px;
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+		font-size: 14px;
+		line-height: 30px;
+		color: #333;
+		border: solid 1px #ccc;
+		border-radius: 3px;
+		background: #f5f5f5;
+		margin: 5px;
+	}
+	.form-row{
+		margin-top: 20px;
+	}
+	.form-row > .tit{
+		font-size: 18px;
+		line-height: 24px;
+		color: #333;
+		font-weight: bold;
+	}
+</style>
 </head>
 
 <body>
 	<div class="wrapper">
-		<form class="global-form-box">
-			<div class="form-group">
-				<label class="control-label" for="account"><i class="must">*</i>账号：</label>
-				<div class="form-group-cell">
-					<div class="frm-ctrl-box">
-						<input type="text"  class="form-control" name="account" id="account" />
-						<a class="frm-ctrl-clear"></a>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="password"><i class="must">*</i>密码：</label>
-				<div class="form-group-cell">
-					<div class="frm-ctrl-box">
-						<input type="password" class="form-control" name="password" id="password"/>
-						<a class="frm-ctrl-clear"></a>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="repassword"><i class="must">*</i>确认密码：</label>
-				<div class="form-group-cell">
-					<div class="frm-ctrl-box">
-						<input type="password" class="form-control" name="repassword" id="repassword"/>
-						<a class="frm-ctrl-clear"></a>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label"><i class="must">*</i>性别：</label>
-				<div class="form-group-cell">
-					<div class="frm-radio-group">
-						<label class="frm-check-box" for="male">
-							<input type="radio" name="gender" id="male" value="male">男
-						</label>
-						<label class="frm-check-box" for="female">
-							<input type="radio" name="gender" id="female" value="female">女
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label"><i class="must">*</i>数值：</label>
-				<div class="form-group-cell">
-					<div class="frm-check-group">
-						<label class="frm-check-box" for="check1">
-							<input type="checkbox" name="check" id="check1" value="1">1
-						</label>
-						<label class="frm-check-box" for="check2">
-							<input type="checkbox" name="check" id="check2" value="2">2
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="edu"><i class="must">*</i>学历：</label>
-				<div class="form-group-cell">
-					<select class="form-control" name="edu" id="edu">
-						<option value="">请选择</option>
-						<option value="专科">专科</option>
-						<option value="本科">本科</option>
-						<option value="研究生">研究生</option>
-						<option value="博士">博士</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="tel"><i class="must">*</i>电话：</label>
-				<div class="form-group-bd">
-					<div class="frm-ctrl-box">
-						<input type="text" class="form-control" name="tel" id="tel"/>
-						<a class="frm-ctrl-clear"></a>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="idNumber"><i class="must">*</i>身份证号码：</label>
-				<div class="form-group-cell">
-					<div class="frm-ctrl-box">
-						<input type="text" class="form-control" name="idNumber" id="idNumber"/>
-						<a class="frm-ctrl-clear"></a>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="email">邮箱：</label>
-				<div class="form-group-bd">
-					<div class="frm-ctrl-box">
-						<input type="text" class="form-control" name="email" id="email"/>
-						<a class="frm-ctrl-clear"></a>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="qq">QQ：</label>
-				<div class="form-group-bd">
-					<div class="frm-ctrl-box">
-						<input type="text" class="form-control" name="qq" id="qq"/>
-						<a class="frm-ctrl-clear"></a>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="addr">地址：</label>
-				<div class="form-group-cell">
-					<textarea type="text" class="form-control" name="addr" id="addr"></textarea>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="attachment">附件：</label>
-				<div class="form-group-cell">
-					<div class="frm-file-box">
+		<div class="w500">
+			<form class="global-form-box">
+				<div class="form-group">
+					<label class="control-label" for="account"><i class="must">*</i>账号：</label>
+					<div class="form-group-cell">
 						<div class="frm-ctrl-box">
-							<div class="form-control"></div>
+							<input type="text"  class="form-control" name="account" id="account"/>
 							<a class="frm-ctrl-clear"></a>
 						</div>
-						<div class="frm-ctrl-upload">
-							<input type="file" name="attachment" id="attachment"/>
-							<a class="ctrl">上传附件</a>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="password"><i class="must">*</i>密码：</label>
+					<div class="form-group-cell">
+						<div class="frm-ctrl-box">
+							<input type="password" class="form-control" name="password" id="password"/>
+							<a class="frm-ctrl-clear"></a>
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div class="frm-btn-group">
-				<a href="javascript:void(0)" class="btn btn-valid-tel">校验电话</a>
-				<a href="javascript:void(0)" class="btn btn-reset">重置</a>
-				<a href="javascript:void(0)" class="btn btn-submit">提交</a>
-			</div>
-		</form>
+				<div class="form-group">
+					<label class="control-label" for="repassword"><i class="must">*</i>确认密码：</label>
+					<div class="form-group-cell">
+						<div class="frm-ctrl-box">
+							<input type="password" class="form-control" name="repassword" id="repassword"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label"><i class="must">*</i>性别：</label>
+					<div class="form-group-cell">
+						<div class="frm-radio-group">
+							<label class="frm-check-box" for="male">
+								<input type="radio" name="gender" id="male" value="male">男
+							</label>
+							<label class="frm-check-box" for="female">
+								<input type="radio" name="gender" id="female" value="female">女
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label"><i class="must">*</i>数值：</label>
+					<div class="form-group-cell">
+						<div class="frm-check-group">
+							<label class="frm-check-box" for="check1">
+								<input type="checkbox" name="check" id="check1" value="1">1
+							</label>
+							<label class="frm-check-box" for="check2">
+								<input type="checkbox" name="check" id="check2" value="2">2
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="edu"><i class="must">*</i>学历：</label>
+					<div class="form-group-cell">
+						<select class="form-control" name="edu" id="edu">
+							<option value="">请选择</option>
+							<option value="专科">专科</option>
+							<option value="本科">本科</option>
+							<option value="研究生">研究生</option>
+							<option value="博士">博士</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="tel"><i class="must">*</i>手机号码：</label>
+					<div class="form-group-bd">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="tel" id="tel"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="phone1">座机号码：</label>
+					<div class="form-group-cell">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="phone1" id="phone1"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="idNumber"><i class="must">*</i>身份证号码：</label>
+					<div class="form-group-cell">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="idNumber" id="idNumber"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="email">邮箱：</label>
+					<div class="form-group-bd">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="email" id="email"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="qq">QQ：</label>
+					<div class="form-group-bd">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="qq" id="qq"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="addr"><i class="must">*</i>地址：</label>
+					<div class="form-group-cell">
+						<div class="frm-ctrl-box">
+							<textarea type="text" class="form-control" name="addr" id="addr"></textarea>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="attachment">附件：</label>
+					<div class="form-group-cell">
+						<div class="frm-ctrl-box">
+							<input type="file" class="form-control" name="attachment" id="attachment"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="form-group">
+					<label class="control-label" for="attachment">附件：</label>
+					<div class="form-group-cell">
+						<div class="frm-file-box">
+							<div class="frm-ctrl-box">
+								<div class="form-control"></div>
+								<a class="frm-ctrl-clear"></a>
+							</div>
+							<div class="frm-ctrl-upload">
+								<input type="file" name="attachment" id="attachment"/>
+								<a class="ctrl">上传附件</a>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				
+				<div class="frm-btn-group">
+					<a href="javascript:void(0)" class="ctrl btn-addfield">点击添加</a>
+					<a href="javascript:void(0)" class="ctrl btn-removefield">点击移除'工作经历1'验证</a>
+					<a href="javascript:void(0)" class="ctrl btn-valid-tel">校验手机号码</a>
+					<a href="javascript:void(0)" class="ctrl btn-valid-phone">校验座机号码</a>
+					<a href="javascript:void(0)" class="ctrl btn-valid-id">校验身份证</a>
+					<a href="javascript:void(0)" class="ctrl frm-reset">重置</a>
+					<a href="javascript:void(0)" class="ctrl frm-submit">提交</a>
+				</div>
+			</form>
+		</div>
+		
 	</div>
 </body>
 

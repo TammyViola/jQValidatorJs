@@ -5,6 +5,9 @@ function globalFormFn(){
         // The clear button class
         // 默认值： null
         clearButton: '.frm-ctrl-clear',
+
+        // 初始加载是否清空表单
+        isClearForm: true,
         /**
         *  指定不验证的情况
         *  值可设置为以下三种类型：
@@ -75,10 +78,17 @@ function globalFormFn(){
                         *   - 'LD'：座机电话
                         *   - 'ALL':移动电话或座机
                         **/
-                        phoneType: 'ALL'  
+                        phoneType: 'MB'  
                     }
                 }
      		},
+            phone1: {
+               validators: {
+                    phone: {
+                        phoneType: 'LD' 
+                    }
+                } 
+            },
      		idNumber: {
      			validators: {
                     notEmpty: true,
@@ -90,6 +100,11 @@ function globalFormFn(){
                     emailAddress: true
                 }
      		},
+            addr: {
+                validators: {
+                    notEmpty: true
+                }
+            },
             attachment: {
                 validators: {
                     file: {
@@ -97,8 +112,8 @@ function globalFormFn(){
                         * 文件类型参考网址：
                         * https://blog.csdn.net/zhuyangru/article/details/70254789
                         */
-                        extension: 'png,jpg,jpeg',
-                        type: 'image/png,image/jpg,image/jpeg'
+                        extension: 'png,jpg,jpeg,gif,txt,doc,docx,pdf,ppt,pptx,zip,rar',
+                        type: 'image/png,image/jpg,image/jpeg,image/gif,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/zip,application/rar'
                     }
                 }
             }
@@ -112,7 +127,7 @@ $(window).load(function() {
  
  
 /// 表单提交
-$('.btn-submit').click(function(){
+$('.frm-submit').click(function(){
 
 　　/// 点击提交按钮进行校验
  　  $('.global-form-box').data('jQValidator').validate();  
@@ -131,29 +146,54 @@ $('.btn-submit').click(function(){
 /// 验证 tel 字段是否正确
 $('.btn-valid-tel').click(function(){
 	var isValid = $(".global-form-box").data('jQValidator').isValidField('tel');
-	alert('电话字段验证是'+isValid)
+	alert('手机电话字段验证是'+isValid)
+});
+
+/// 验证 phone 字段是否正确
+$('.btn-valid-phone').click(function(){
+    var isValid = $(".global-form-box").data('jQValidator').isValidField('phone');
+    alert('座机电话字段验证是'+isValid)
+});
+
+/// 验证 身份证 字段是否正确
+$('.btn-valid-id').click(function(){
+    var isValid = $(".global-form-box").data('jQValidator').isValidField('idNumber');
+    alert('身份证字段验证是'+isValid)
 });
 
 /// 重置表单
-$('.global-form-box .btn-reset').click(function(){
+$('.global-form-box .frm-reset').click(function(){
     $('.global-form-box').data('jQValidator').resetForm(true);
     globalFormFn();
 });
 
-/// 上传附件
-$('#attachment').on('change', function(event) {
-    var val = $(this).val(),
-        nameArr = val.split('\\'),
-        name = nameArr[nameArr.length-1];
+// 点击添加动态文本框
+var fieldIndex = 1;
+$('.btn-addfield').on('click', function(){
+    var htm = '';
+    htm += '<div class="form-row">';
+    htm += '<h4 class="tit">工作经历'+ fieldIndex +'</h4>';
+    htm += '<div class="form-group">';
+    htm += '<label class="control-label" for="workTime'+ fieldIndex +'"><i class="must">*</i>工作时间</label>';
+    htm += '<div class="form-group-cell">';
+    htm += '<input type="text" class="form-control" name="workTime'+ fieldIndex +'" id="workTime'+ fieldIndex +'"/>';
+    htm += '</div>';
+    htm += '</div></div>';
 
-    /// 对上传控件验证状态更新
-    $(".global-form-box").data('jQValidator').updateStatus("attachment",  "NOT_VALIDATED",  null ).validateField('attachment');
+    $('.frm-btn-group').before(htm);
 
-    var isTrue = $(".global-form-box").data('jQValidator').isValidField('attachment');
-    
-    if(isTrue){
-        $('.frm-file-box .form-control').text(name);
-    }
-}); 
+    $('.global-form-box').jQValidator('addField', 'workTime'+fieldIndex, {
+        validators: {
+            notEmpty: true
+        }
+    });
+
+    fieldIndex++;
+});
+
+// 点击移除验证
+$('.btn-removefield').on('click', function(){
+    $('.global-form-box').jQValidator('removeField', 'workTime1');
+});
 
 
