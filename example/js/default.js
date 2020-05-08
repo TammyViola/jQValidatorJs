@@ -42,6 +42,10 @@ function globalFormFn(){
                     different: {  
                         field: 'account',//需要进行比较的input name值
                         message: '不能和账号相同'
+                    },
+                    identical: {
+                        field: 'repassword',
+                        message: '两次密码不一致'
                     }
                 }
      		},
@@ -56,12 +60,39 @@ function globalFormFn(){
      		},
      		gender: {
      			validators: {
-                    notEmpty: true
+                    notEmpty: true,
+                    gender: {
+                        idCardName: 'idNumber'
+                    }
                 }
      		},
             check: {
                 validators: {
                     notEmpty: true
+                }
+            },
+            birth: {
+                validators: {
+                    notEmpty: true,
+                    birthDate: {
+                        idCardName: 'idNumber'
+                    }
+                }
+            },
+            idNumber: {
+                validators: {
+                    notEmpty: true,
+                    idCard: true
+                }
+            },
+            bankCard: {
+                validators: {
+                    bankCard: true
+                }
+            },
+            qqNum: {
+                validators: {
+                    QQNumber: true
                 }
             },
      		edu: {
@@ -89,12 +120,13 @@ function globalFormFn(){
                     }
                 } 
             },
-     		idNumber: {
-     			validators: {
-                    notEmpty: true,
-                    idCard: true
-                }
-     		},
+            allTel: {
+                validators: {
+                    phone: {
+                        phoneType: 'ALL' 
+                    }
+                } 
+            },
      		email: {
      			validators: {
                     emailAddress: true
@@ -112,8 +144,16 @@ function globalFormFn(){
                         * 文件类型参考网址：
                         * https://blog.csdn.net/zhuyangru/article/details/70254789
                         */
-                        extension: 'png,jpg,jpeg,gif,txt,doc,docx,pdf,ppt,pptx,zip,rar',
-                        type: 'image/png,image/jpg,image/jpeg,image/gif,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/zip,application/rar'
+                        extension: 'png, jpg, jpeg, gif',
+                        type: 'image/png,image/jpg,image/jpeg,image/gif'
+                    }
+                }
+            },
+            attachment2: {
+                validators: {
+                    file: {
+                        extension: 'txt,doc,docx,ppt',
+                        type: 'text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint'
                     }
                 }
             }
@@ -145,24 +185,78 @@ $('.frm-submit').click(function(){
 
 /// 验证 tel 字段是否正确
 $('.btn-valid-tel').click(function(){
-	var isValid = $(".global-form-box").data('jQValidator').isValidField('tel');
+    var isValid;
+    var jQValidator = $(".global-form-box").data('jQValidator'); 
+    jQValidator.updateStatus('tel', 'NOT_VALIDATED').validateField('tel');
+    isValid = jQValidator.isValidField('tel');
 	alert('手机电话字段验证是'+isValid)
 });
 
 /// 验证 phone 字段是否正确
 $('.btn-valid-phone').click(function(){
-    var isValid = $(".global-form-box").data('jQValidator').isValidField('phone');
+    var isValid;
+    var jQValidator = $(".global-form-box").data('jQValidator'); 
+    jQValidator.updateStatus('phone1', 'NOT_VALIDATED').validateField('phone1');
+    isValid = jQValidator.isValidField('phone1');
     alert('座机电话字段验证是'+isValid)
+});
+
+/// 验证 allTel 字段是否正确
+$('.btn-valid-allTel').click(function(){
+    var isValid;
+    var jQValidator = $(".global-form-box").data('jQValidator'); 
+    jQValidator.updateStatus('allTel', 'NOT_VALIDATED').validateField('allTel');
+    isValid = jQValidator.isValidField('allTel');
+    alert('电话号码字段验证是'+isValid)
 });
 
 /// 验证 身份证 字段是否正确
 $('.btn-valid-id').click(function(){
-    var isValid = $(".global-form-box").data('jQValidator').isValidField('idNumber');
+    var isValid;
+    var jQValidator = $(".global-form-box").data('jQValidator'); 
+    jQValidator.updateStatus('idNumber', 'NOT_VALIDATED').validateField('idNumber');
+    isValid = jQValidator.isValidField('idNumber');
     alert('身份证字段验证是'+isValid)
 });
 
+/// 验证 出生日期 字段是否正确
+$('.btn-valid-birth').click(function(){
+    var isValid;
+    var jQValidator = $(".global-form-box").data('jQValidator'); 
+    jQValidator.updateStatus('birth', 'NOT_VALIDATED').validateField('birth');
+    isValid = jQValidator.isValidField('birth');
+    alert('出生日期字段验证是'+isValid)
+});
+
+/// 验证 性别 字段是否正确
+$('.btn-valid-sex').click(function(){
+    var isValid;
+    var jQValidator = $(".global-form-box").data('jQValidator'); 
+    jQValidator.updateStatus('gender', 'NOT_VALIDATED').validateField('gender');
+    isValid = jQValidator.isValidField('gender');
+    alert('性别字段验证是'+isValid)
+});
+
+/// 验证 附件 字段是否正确
+$('.btn-valid-file').click(function(){
+    var isValid;
+    var jQValidator = $(".global-form-box").data('jQValidator'); 
+    jQValidator.updateStatus('attachment', 'NOT_VALIDATED').validateField('attachment');
+    isValid = jQValidator.isValidField('attachment');
+    alert('附件字段验证是'+isValid)
+});
+
+/// 验证 附件2 字段是否正确
+$('.btn-valid-file2').click(function(){
+    var isValid;
+    var jQValidator = $(".global-form-box").data('jQValidator'); 
+    jQValidator.updateStatus('attachment2', 'NOT_VALIDATED').validateField('attachment2');
+    isValid = jQValidator.isValidField('attachment2');
+    alert('附件2字段验证是'+isValid)
+});
+
 /// 重置表单
-$('.global-form-box .frm-reset').click(function(){
+$('.frm-reset').click(function(){
     $('.global-form-box').data('jQValidator').resetForm(true);
     globalFormFn();
 });
@@ -180,7 +274,7 @@ $('.btn-addfield').on('click', function(){
     htm += '</div>';
     htm += '</div></div>';
 
-    $('.frm-btn-group').before(htm);
+    $('.global-form-box').append(htm);
 
     $('.global-form-box').jQValidator('addField', 'workTime'+fieldIndex, {
         validators: {
@@ -194,6 +288,13 @@ $('.btn-addfield').on('click', function(){
 // 点击移除验证
 $('.btn-removefield').on('click', function(){
     $('.global-form-box').jQValidator('removeField', 'workTime1');
+    alert('必填限制移除掉啦！');
+});
+
+// 文件上传清除按钮
+$('.frm-file-box .frm-ctrl-clear').on('click', function(){
+    var $txt = $(this).parents('.frm-file-box').find('.result');
+    $txt.html('');
 });
 
 

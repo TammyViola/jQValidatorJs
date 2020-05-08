@@ -4,16 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="designer" content="网站开发设计制作：杭州蒙特信息技术有限公司  www.mountor.cn 咨询电话0571-88368188"/>
+<meta name="designer" content=""/>
 <meta name="description" content="" />
 <meta name="keywords"  content=""/>
 <title>表单验证</title>
 <link href="../dist/css/module.css" rel="stylesheet" type="text/css"/>
-<link href="../dist/css/jQValidator.css" rel="stylesheet" type="text/css"/>
+<link href="../dist/css/jQValidator.min.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 	.w500{
 		width: 500px;
 		margin: 0 auto;
+	}
+	.global-form-box{
+		margin-bottom: 300px;
 	}
 	.form-control{
 		width: 462px;
@@ -24,9 +27,17 @@
 		height: 40px;
 	}
 	.frm-btn-group{
+		width: 100%;
+		background: #fff;
 		overflow: hidden;
 		text-align: center;
-		margin:  30px auto;
+		padding:  30px 10px;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		z-index: 99999;
+		border-top: solid 1px #ccc;
+		box-shadow: 0 0 5px rgba(0,0,0,.2);
 	}
 	.frm-btn-group .ctrl{
 		min-width: 4em;
@@ -86,20 +97,38 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label" for="birth"><i class="must">*</i>出生日期</label>
+					<div class="form-group-bd">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="birth" id="birth"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="idNumber"><i class="must">*</i>身份证号码：</label>
+					<div class="form-group-cell">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="idNumber" id="idNumber"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label"><i class="must">*</i>性别：</label>
 					<div class="form-group-cell">
 						<div class="frm-radio-group">
 							<label class="frm-check-box" for="male">
-								<input type="radio" name="gender" id="male" value="male">男
+								<input type="radio" name="gender" id="male" value="1">男
 							</label>
 							<label class="frm-check-box" for="female">
-								<input type="radio" name="gender" id="female" value="female">女
+								<input type="radio" name="gender" id="female" value="0">女
 							</label>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label"><i class="must">*</i>数值：</label>
+					<label class="control-label"><i class="must">*</i>测试复选框必填：</label>
 					<div class="form-group-cell">
 						<div class="frm-check-group">
 							<label class="frm-check-box" for="check1">
@@ -108,6 +137,59 @@
 							<label class="frm-check-box" for="check2">
 								<input type="checkbox" name="check" id="check2" value="2">2
 							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">测试不在验证范围内的复选框是否能重置：</label>
+					<div class="form-group-cell">
+						<div class="frm-check-group">
+							<label class="frm-check-box" for="check3">
+								<input type="checkbox" name="check2" id="check3" value="1">1
+							</label>
+							<label class="frm-check-box" for="check4">
+								<input type="checkbox" name="check2" id="check4" value="2">2
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">测试不在验证范围内的单选框是否能重置：</label>
+					<div class="form-group-cell">
+						<div class="frm-check-group">
+							<label class="frm-check-box" for="check5">
+								<input type="radio" name="check3" id="check5" value="1">1
+							</label>
+							<label class="frm-check-box" for="check6">
+								<input type="radio" name="check3" id="check6" value="2">2
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="age">年龄：</label>
+					<div class="form-group-bd">
+						<div class="frm-ctrl-box">
+							<input type="number" pattern="[0-9]*" class="form-control" name="age" id="age"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="bankCard">银行卡：</label>
+					<div class="form-group-bd">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="bankCard" id="bankCard"/>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="qqNum">QQ：</label>
+					<div class="form-group-bd">
+						<div class="frm-ctrl-box">
+							<input type="text" class="form-control" name="qqNum" id="qqNum"/>
+							<a class="frm-ctrl-clear"></a>
 						</div>
 					</div>
 				</div>
@@ -142,10 +224,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="idNumber"><i class="must">*</i>身份证号码：</label>
+					<label class="control-label" for="allTel">电话号码（包含手机和座机号码）：</label>
 					<div class="form-group-cell">
 						<div class="frm-ctrl-box">
-							<input type="text" class="form-control" name="idNumber" id="idNumber"/>
+							<input type="text" class="form-control" name="allTel" id="allTel"/>
 							<a class="frm-ctrl-clear"></a>
 						</div>
 					</div>
@@ -178,6 +260,15 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label" for="note">备注：</label>
+					<div class="form-group-cell">
+						<div class="frm-ctrl-box">
+							<textarea type="text" class="form-control" name="note" id="note"></textarea>
+							<a class="frm-ctrl-clear"></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label" for="attachment">附件：</label>
 					<div class="form-group-cell">
 						<div class="frm-ctrl-box">
@@ -186,38 +277,90 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="form-group">
-					<label class="control-label" for="attachment">附件：</label>
+				<div class="form-group">
+					<label class="control-label" for="attachment2">附件样式二：</label>
 					<div class="form-group-cell">
 						<div class="frm-file-box">
 							<div class="frm-ctrl-box">
-								<div class="form-control"></div>
+								<div class="result"></div>
 								<a class="frm-ctrl-clear"></a>
 							</div>
 							<div class="frm-ctrl-upload">
-								<input type="file" name="attachment" id="attachment"/>
+								<input class="form-control" type="file" name="attachment2" id="attachment2"/>
 								<a class="ctrl">上传附件</a>
 							</div>
 						</div>
 					</div>
-				</div> -->
-				
-				<div class="frm-btn-group">
-					<a href="javascript:void(0)" class="ctrl btn-addfield">点击添加</a>
-					<a href="javascript:void(0)" class="ctrl btn-removefield">点击移除'工作经历1'验证</a>
-					<a href="javascript:void(0)" class="ctrl btn-valid-tel">校验手机号码</a>
-					<a href="javascript:void(0)" class="ctrl btn-valid-phone">校验座机号码</a>
-					<a href="javascript:void(0)" class="ctrl btn-valid-id">校验身份证</a>
-					<a href="javascript:void(0)" class="ctrl frm-reset">重置</a>
-					<a href="javascript:void(0)" class="ctrl frm-submit">提交</a>
 				</div>
 			</form>
 		</div>
 		
+		<div class="frm-btn-group">
+			<a href="javascript:void(0)" class="ctrl btn-addfield">点击添加</a>
+			<a href="javascript:void(0)" class="ctrl btn-removefield">点击移除'工作经历1'验证</a>
+			<a href="javascript:void(0)" class="ctrl btn-valid-tel">校验手机号码</a>
+			<a href="javascript:void(0)" class="ctrl btn-valid-phone">校验座机号码</a>
+			<a href="javascript:void(0)" class="ctrl btn-valid-allTel">校验电话号码</a>
+			<a href="javascript:void(0)" class="ctrl btn-valid-id">校验身份证</a>
+			<a href="javascript:void(0)" class="ctrl btn-valid-birth">校验出生日期</a>
+			<a href="javascript:void(0)" class="ctrl btn-valid-sex">校验性别</a>
+			<a href="javascript:void(0)" class="ctrl btn-valid-file">校验附件</a>
+			<a href="javascript:void(0)" class="ctrl btn-valid-file2">校验附件2</a>
+			<a href="javascript:void(0)" class="ctrl frm-reset">重置</a>
+			<a href="javascript:void(0)" class="ctrl frm-submit">提交</a>
+		</div>
 	</div>
 </body>
 
 </html>
 <script type="text/javascript" src="../dist/js/jquery.min.js"></script>
 <script type="text/javascript" src="../dist/js/jQValidator.min.js"></script>
+<script type="text/javascript" src="../dist/js/laydate.js"></script>
 <script type="text/javascript" src="js/default.js"></script>
+<script type="text/javascript">
+	// 出生日期
+	var laydateTime;
+	laydate.render({
+	  elem: '#birth'
+	  ,done: function(value, date){
+	  	var isValid;
+	  	var jQValidator = $(".global-form-box").data('jQValidator');
+	  	clearTimeout(laydateTime);
+	  	laydateTime = setTimeout(function(){
+	  		jQValidator.updateStatus('birth', 'NOT_VALIDATED').validateField('birth');
+    		isValid = jQValidator.isValidField('birth');
+	  	}, 100); 
+	  }
+	});
+
+	// 附件样式二
+	var fileTime;
+	$('#attachment2').on('change', function(){
+	    var that = this;
+	    var isValid;
+	    var jQValidator = $(".global-form-box").data('jQValidator');
+	    var isMultiple = $(this).attr('multiple'),  // 是否是多文件上传
+	        id = $(this).attr('id');
+	    var input = document.getElementById(id);
+	    var val = $(that).val(), txt = '' ;
+
+	    if(val){
+	        if(!isMultiple){
+	            val = val.split('\\');
+	            txt = val[val.length-1];
+	        }else{
+	            var fileList = input.files;
+	            for(var i = 0; i < fileList.length; i++){
+	                if(i < fileList.length-1){
+	                    txt += fileList[i].name + ', ';
+	                }else{
+	                    txt += fileList[i].name;
+	                }
+	            }
+	        }
+	    }
+	    $(that).parents('.form-group').find('.result').html(txt);
+	    jQValidator.updateStatus('attachment2', 'NOT_VALIDATED').validateField('attachment2');
+	    isValid = jQValidator.isValidField('attachment2');
+	});
+</script>
