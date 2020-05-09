@@ -291,10 +291,5 @@ $('.btn-removefield').on('click', function(){
     alert('必填限制移除掉啦！');
 });
 
-// 文件上传清除按钮
-$('.frm-file-box .frm-ctrl-clear').on('click', function(){
-    var $txt = $(this).parents('.frm-file-box').find('.result');
-    $txt.html('');
-});
 
 
