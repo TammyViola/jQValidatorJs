@@ -328,7 +328,6 @@
 	  	clearTimeout(laydateTime);
 	  	laydateTime = setTimeout(function(){
 	  		jQValidator.updateStatus('birth', 'NOT_VALIDATED').validateField('birth');
-    		isValid = jQValidator.isValidField('birth');
 	  	}, 100); 
 	  }
 	});
@@ -361,6 +360,5 @@
 	    }
 	    $(that).parents('.form-group').find('.result').html(txt);
 	    jQValidator.updateStatus('attachment2', 'NOT_VALIDATED').validateField('attachment2');
-	    isValid = jQValidator.isValidField('attachment2');
 	});
 </script>
