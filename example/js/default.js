@@ -45,7 +45,8 @@ function globalFormFn(){
                     },
                     identical: {
                         field: 'repassword',
-                        message: '两次密码不一致'
+                        message: '两次密码不一致',
+                        ismain: true
                     }
                 }
      		},
