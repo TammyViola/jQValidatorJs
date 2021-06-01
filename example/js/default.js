@@ -110,7 +110,8 @@ function globalFormFn(){
                         *   - 'LD'：座机电话
                         *   - 'ALL':移动电话或座机
                         **/
-                        phoneType: 'MB'  
+                        phoneType: 'MB',
+                        isOpenHKM: false // 是否开启港澳手机校验  
                     }
                 }
      		},
