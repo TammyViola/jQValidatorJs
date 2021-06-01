@@ -1,5 +1,8 @@
 ﻿# jQValidatorJs
-> 可以兼容ie7+以上的ie浏览器及现代主流浏览器   **version 2.7.2**
+> 可以兼容ie7+以上的ie浏览器及现代主流浏览器   **version 2.7.3**
+
+## 2.7.3版本新增修改如下：
+1. remote验证统一回调数据形式，其验证获取的是ajax返回的值里的 result 对象里的valid值，即result{valid: true}
 
 ## 2.7.2版本新增修改如下：
 1. 新增港澳手机号码校验,以及开启港澳手机校验的参数isOpenHKM，默认false
