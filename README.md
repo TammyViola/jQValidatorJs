@@ -19,5 +19,5 @@
 
 
 ## 插件具体API说明，请参考网址:
-[http://www.cnblogs.com/TammyBlog/p/7376432.html](http://www.cnblogs.com/TammyBlog/p/7376432.html)
-[https://blog.csdn.net/langlang005/article/details/115298665](https://blog.csdn.net/langlang005/article/details/115298665)
+* [http://www.cnblogs.com/TammyBlog/p/7376432.html](http://www.cnblogs.com/TammyBlog/p/7376432.html)
+* [https://blog.csdn.net/langlang005/article/details/115298665](https://blog.csdn.net/langlang005/article/details/115298665)
