@@ -1,0 +1,261 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="designer" content="网站开发设计制作：杭州蒙特信息技术有限公司  www.mountor.cn 咨询电话0571-88368188"/>
+<meta name="description" content="" />
+<meta name="keywords"  content=""/>
+<title>表单验证</title>
+<link href="../dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../dist/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+<link href="../dist/css/module.css" rel="stylesheet" type="text/css"/>
+<!-- 以下css可用可不用，根据实际项目情况 -->
+<link href="../dist/css/jQValidator.css" rel="stylesheet" type="text/css"/>
+<!-- 以下css根据不同项目自定义 -->
+<style type="text/css">
+.form-row-inner{
+	padding: 0 82px;
+}
+.frm-check-box.col-sm-4{
+	margin: 0;
+	padding-right: 20px;
+}
+</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<form class="global-form-box">
+			<!-- 基本信息开始 -->
+			<div class="form-row-wrap">
+				<div class="form-row-head">
+					<h4 class="form-row-lvtit">基本信息</h4>
+				</div>
+				<div class="form-row-body">
+					<div class="form-group">
+						<label class="control-label" for="applyName">姓名<i class="must">*</i></label>
+						<div class="form-group-cell">
+							<input type='text'  class="form-control" name="applyName" id="applyName" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">性别<i class="must">*</i></label>
+						<div class="form-group-cell">
+							<div class="frm-check-group">
+								<label class="frm-check-box" for="male">
+									<input type="radio" name="applyGender" id="male" value="male">男
+								</label>
+								<label class="frm-check-box" for="female">
+									<input type="radio" name="applyGender" id="female" value="female">女
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="applyBirth">出生日期<i class="must">*</i></label>
+						<div class="form-group-cell">
+							<input type="text" class="form-control laydate-item" name="applyBirth" id="applyBirth">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="applyTel">手机号<i class="must">*</i></label>
+						<div class="form-group-cell">
+							<input type='text'  class="form-control" name="applyTel" id="applyTel" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="applyEmail">邮箱<i class="must">*</i></label>
+						<div class="form-group-cell">
+							<input type='text'  class="form-control" name="applyEmail" id="applyEmail" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="applyId">身份证<i class="must">*</i></label>
+						<div class="form-group-cell">
+							<input type='text'  class="form-control" name="applyId" id="applyId" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="applyPost">职业<i class="must">*</i></label>
+						<div class="form-group-cell">
+							<select class="form-control" name="applyPost" id="applyPost">
+								<option value="">请选择</option>
+								<option value="1">计算机</option>
+								<option value="2">金融</option>
+								<option value="3">编辑</option>
+								<option value="4">作家</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="applyRegion">地区<i class="must">*</i></label>
+						<div class="form-group-cell">
+							<div class="frm-region-box">
+								<div class="item col-sm-4">
+									<select class="form-control" name="applyRegion" id="province" onchange="citySelect(this);">
+										<option value="" disabled="disabled">省</option>
+									</select>
+								</div>
+								<div class="item col-sm-4">
+									<select class="form-control" name="applyRegion" id="city" onchange="citySelect(this);">
+										<option value="" disabled="disabled">市</option>
+									</select>
+								</div>
+								<div class="item col-sm-4">
+									<select class="form-control" name="applyRegion" id="district">
+										<option value="" disabled="disabled">区</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 基本信息结束 -->
+			
+			<!-- 教育经历开始 -->
+			<div class="form-row-wrap">
+				<div class="form-row-head">
+					<h4 class="form-row-lvtit">教育经历</h4>
+				</div>
+				<div class="form-row-body">
+					<div class="form-multidata-list" id="eduList" data-name="EduExperience">
+						<div class="form-multidata-item">
+							<div class="form-multidata-item_body">
+								<div class="form-group">
+									<label class="control-label" for="applyEduTime">起止时间</label>
+									<div class="form-group-cell">
+										<input type="text" class="form-control laydate-input" name="applyRangeTime" id="applyEduTime">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="applyEduSchool">学校</label>
+									<div class="form-group-cell">
+										<input type='text'  class="form-control" name="applyEduSchool" id="applyEduSchool"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="applyEduMajor">专业</label>
+									<div class="form-group-cell">
+										<input type='text'  class="form-control" name="applyEduMajor" id="applyEduMajor"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="applyEduBg">学历</label>
+									<div class="form-group-cell">
+										<input type='text'  class="form-control" name="applyEduBg" id="applyEduBg"/>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-multidata-item_foot">
+								<a href="javascript: void(0)" class="btn-multidata-delete">删除</a>
+							</div>
+						</div>
+					</div>
+					<div class="form-multidata-tool">
+						<a href="javascript: void(0)" class="btn-multidata-add" data-list="eduList">+  增加教育经历</a>
+					</div>
+				</div>
+			</div>
+			<!-- 教育经历结束 -->
+			
+			<!-- 更多信息开始 -->
+			<div class="form-row-wrap">
+				<div class="form-row-head">
+					<h4 class="form-row-lvtit">更多信息</h4>
+				</div>
+				<div class="form-row-body">
+					<div class="form-group">
+						<label class="control-label" for="applyIntrod">个人简介</label>
+						<div class="form-group-cell">
+							<div class="frm-ctrl-box">
+								<textarea class="form-control" name="applyIntrod" id="applyIntrod" placeholder="请输入个人简介，最多300字"></textarea>
+								<div class="frm-ctrl-num"><span class="now">0</span>/<span class="total">300</span></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">兴趣爱好</label>
+						<div class="form-group-cell">
+							<div class="frm-check-group had-limit">
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='UI设计'>UI设计</label>
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='交互设计'>交互设计</label>
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='动效设计'>动效设计</label>
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='视觉设计'>视觉设计</label>
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='产品运营'>产品运营</label>
+
+								<a href="javascript:void(0)" class="frm-check-open">更多<img src="../dist/images/more_arrow.png"/></a>
+
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='UI设计'>UI设计</label>
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='交互设计'>交互设计</label>
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='动效设计'>动效设计</label>
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='视觉设计'>视觉设计</label>
+								<label class="frm-check-box col-sm-4"><input type="checkbox" name="applyHob" value='产品运营'>产品运营</label>
+							</div>
+							<input type="text" class="form-control" placeholder="请输入其他爱好">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">简历</label>
+						<div class="form-group-cell">
+							<div class="frm-file-box">
+								<div class="frm-ctrl-upload">
+									<input type="file" name="applyFile" id="applyFile">
+									<span  class="txt"><img src="../dist/images/icon_upload.png"/>选择文件</span>
+								</div>
+								<ul class="frm-file-list">
+									<li>
+										<div class="file-pross"></div>
+										<div class="file-bd">
+											<h5 class="title"><a>个人资料.doc</a></h5>
+											<a href="javascript:void(0)" class="btn-del"></a>
+										</div>
+									</li>
+									<li>
+										<div class="file-pross"></div>
+										<div class="file-bd">
+											<h5 class="title"><a>个人照片.jpg</a></h5>
+											<a href="javascript:void(0)" class="btn-del"></a>
+										</div>
+									</li>
+								</ul>
+								<div class="file-tips">仅支持JPG、JPEG、DOC、DOCX格式，大小1M以内</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="applyVcode">验证码</label>
+						<div class="form-group-cell">
+							<div class="frm-vcode-box">
+								<input type="text" name="applyVcode" id="applyVcode" class="form-control">
+								<div class="vcode-image"><img src="images/vcode.jpg"/></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 更多信息结束 -->
+
+			<!-- 表单按钮开始 -->
+			<div class="frm-btn-group">
+				<a href="javascript: void(0)" class="btn btn-submit">提交</a>
+				<a href="javascript: void(0)" class="btn btn-reset">重置</a>
+			</div>
+			<!-- 表单按钮结束 -->
+		</form>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="../dist/js/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../dist/js/jQValidator.min.js"></script>
+<script type="text/javascript" src="../dist/js/laydate.js"></script>
+<script type="text/javascript" src="../dist/js/citySelect.js"></script>
+<script type="text/javascript" src="js/default.js"></script>

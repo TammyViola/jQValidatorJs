@@ -1,6 +1,7 @@
 
 /**********
  * validator.css
+ * v2.8.0
  ******/
 input[type='radio'],
 input[type='checkbox'],
@@ -41,13 +42,13 @@ textarea{
 }
 
 /********/
-.frm-row{
+.form-row-wrap{
   width: 100%;
   overflow: hidden;
   position: relative;
   margin-bottom: 45px;
 }
-.frm-row-hd{
+.form-row-head{
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -55,19 +56,19 @@ textarea{
   padding-bottom: 14px;
   margin-bottom: 20px;
 }
-.frm-row-hd .row-title{
+.form-row-lvtit{
   float: left;
   font-size: 18px;
   line-height: 28px;
   color: #000;
   font-weight: bold;
 }
-.frm-row-bd{
+.form-row-body{
   overflow: hidden;
   position: relative;
   padding: 0;
 }
-.frm-subrow{
+.form-multidata-item{
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -75,33 +76,34 @@ textarea{
   border-bottom: dashed 1px #ccc;
   margin-bottom: 16px;
 }
-.frm-row .frm-subrow:last-child{
-  margin-bottom: 0;
+.form-multidata-item:first-child .btn-multidata-delete{
+  display: none;
 }
-.frm-subrow .row-hd{
+
+.form-multidata-item_head{
   width: 100%;
   overflow: hidden;
   position: relative;
   z-index: 10;
 }
-.frm-subrow .row-hd .row-title{
+.form-multidata-item_lvtit{
   float: left;
   font-size: 14px;
   line-height: 18px;
   color: #666666;
   font-weight: bold;
 }
-.frm-subrow .tool-box{
+.form-multidata-item_foot{
   overflow: hidden;
   margin-top: 5px;
   font-size: 14px;
   line-height: 24px;
   color: #ff3434;
 }
-.btn-del-subrow{
+.btn-multidata-delete{
   color: #ff3434;
 }
-.btn-add-subrow{
+.btn-multidata-add{
   font-size: 14px;
   line-height: 20px;
   color: #0882e3;
